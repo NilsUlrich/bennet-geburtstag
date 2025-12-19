@@ -4,11 +4,12 @@ import ChallengeScreen from './components/ChallengeScreen';
 import Question from './components/Question';
 import ResultScreen from './components/ResultScreen';
 import GiftReveal from './components/GiftReveal';
+import MemoryGame from './components/MemoryGame';
 import { friends, questions } from './data/quizData';
 import './App.css';
 
 function App() {
-  // States: 'welcome', 'quiz', 'result', 'end-challenge', 'gift'
+  // States: 'welcome', 'quiz', 'result', 'end-challenge', 'memory', 'gift'
   const [gameState, setGameState] = useState('welcome');
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
@@ -52,6 +53,12 @@ function App() {
   };
 
   const handleEndChallengeComplete = () => {
+    // Nach Coding Challenge automatisch ins Memory
+    setGameState('memory');
+  };
+
+  const handleMemoryComplete = () => {
+    // Nach Memory zum Geschenk
     setGameState('gift');
   };
 
@@ -85,6 +92,10 @@ function App() {
           onComplete={handleEndChallengeComplete}
           isEndChallenge={true}
         />
+      )}
+
+      {gameState === 'memory' && (
+        <MemoryGame gridPairs={6} onComplete={handleMemoryComplete} />
       )}
 
       {gameState === 'gift' && (

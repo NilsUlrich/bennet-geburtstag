@@ -282,6 +282,7 @@ function ChallengeScreen({ onComplete, isEndChallenge = false }) {
                   </div>
                 </div>
               )}
+
             </div>
           </>
         )}
