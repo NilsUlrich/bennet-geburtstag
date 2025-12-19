@@ -1,4 +1,7 @@
 .memory-screen {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: linear-gradient(135deg, #202020 0%, #052f54 100%);
   max-width: 900px;
   margin: 0 auto;
   padding: 24px;
@@ -15,16 +18,17 @@
 .memory-title {
   margin: 0;
   font-size: 1.4rem;
+  color: white;
 }
 
 .memory-stats {
   display: flex;
   gap: 12px;
-  color: #555;
 }
 
 .stat {
-  background: #f3f4f6;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
   border-radius: 8px;
   padding: 6px 10px;
   font-size: 0.9rem;
@@ -129,12 +133,12 @@
 .finish-card {
   padding: 16px 20px;
   border-radius: 12px;
-  background: #ecfdf5;
-  border: 1px solid #a7f3d0;
+  background: rgba(74, 222, 128, 0.2);
+  border: 1px solid rgba(74, 222, 128, 0.4);
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
 .finish-emoji { font-size: 1.4rem; }
-.finish-text { margin: 0; font-weight: 600; color: #065f46; }
+.finish-text { margin: 0; font-weight: 600; color: #4ade80; }

@@ -89,6 +89,7 @@ function Question({ question, questionNumber, totalQuestions, onAnswer, onNext }
   const [confirmationLevel, setConfirmationLevel] = useState(0);
   const [ghostClicks, setGhostClicks] = useState(0);
   const [showingGhostMessage, setShowingGhostMessage] = useState(false);
+  const [fullscreenImage, setFullscreenImage] = useState(null);
 
   const containerRef = useRef(null);
   const dropdownRef = useRef(null);
@@ -425,6 +426,7 @@ function Question({ question, questionNumber, totalQuestions, onAnswer, onNext }
                 src={successImage}
                 alt="Richtig"
                 className="result-img"
+                onClick={() => phase === PHASES.TROLL && setFullscreenImage(successImage)}
                 onError={(e) => {
                   e.target.src = 'https://ui-avatars.com/api/?name=OK&background=4ade80&color=fff&size=150';
                 }}
@@ -440,6 +442,7 @@ function Question({ question, questionNumber, totalQuestions, onAnswer, onNext }
                 src={failImage}
                 alt="Falsch"
                 className="result-img"
+                onClick={() => phase === PHASES.TROLL && setFullscreenImage(failImage)}
                 onError={(e) => {
                   e.target.src = `${BASE_URL}images/bennet_fail.png`;
                 }}
@@ -623,6 +626,16 @@ function Question({ question, questionNumber, totalQuestions, onAnswer, onNext }
               )}
             </div>
           )}
+        </div>
+      )}
+
+      {/* Fullscreen Image Modal */}
+      {fullscreenImage && (
+        <div className="fullscreen-modal" onClick={() => setFullscreenImage(null)}>
+          <button className="fullscreen-close" onClick={() => setFullscreenImage(null)}>
+            ✕
+          </button>
+          <img src={fullscreenImage} alt="Vollbild" className="fullscreen-image" />
         </div>
       )}
     </div>
