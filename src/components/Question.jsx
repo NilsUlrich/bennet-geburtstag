@@ -1,6 +1,9 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import './Question.css';
 
+// Base URL for images (handles GitHub Pages path)
+const BASE_URL = import.meta.env.BASE_URL;
+
 // Phases after answering
 const PHASES = {
   QUESTION: 'question',     // User can still click answers
@@ -90,10 +93,13 @@ function Question({ question, questionNumber, totalQuestions, onAnswer, onNext }
   const containerRef = useRef(null);
   const dropdownRef = useRef(null);
 
-  // Get result images
+  // Get result images (with BASE_URL for GitHub Pages)
   const baseName = getImageBaseName(question.image);
-  const successImage = baseName ? `/images/${baseName}_success.png` : null;
-  const failImage = baseName ? `/images/${baseName}_fail.png` : null;
+  const successImage = baseName ? `${BASE_URL}images/${baseName}_success.png` : null;
+  const failImage = baseName ? `${BASE_URL}images/${baseName}_fail.png` : null;
+
+  // Ref for scrolling
+  const imagesRef = useRef(null);
 
   // Reset when question changes
   useEffect(() => {
@@ -156,9 +162,14 @@ function Question({ question, questionNumber, totalQuestions, onAnswer, onNext }
     return () => clearInterval(interval);
   }, [phase, question.answers]);
 
-  // Reveal phase -> Troll phase
+  // Reveal phase -> Troll phase + auto scroll
   useEffect(() => {
     if (phase !== PHASES.REVEAL) return;
+
+    // Auto scroll to images section
+    if (imagesRef.current) {
+      imagesRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
 
     const timer = setTimeout(() => {
       setPhase(PHASES.TROLL);
@@ -363,7 +374,7 @@ function Question({ question, questionNumber, totalQuestions, onAnswer, onNext }
 
       <div className="question-image-container">
         <img
-          src={question.image}
+          src={`${BASE_URL}${question.image.replace(/^\//, '')}`}
           alt="Frage"
           className="question-image"
           onError={(e) => {
@@ -377,7 +388,7 @@ function Question({ question, questionNumber, totalQuestions, onAnswer, onNext }
       {question.contentImage && (
         <div className="content-image-container">
           <img
-            src={question.contentImage}
+            src={`${BASE_URL}${question.contentImage.replace(/^\//, '')}`}
             alt="Kontext"
             className="content-image"
           />
@@ -399,7 +410,7 @@ function Question({ question, questionNumber, totalQuestions, onAnswer, onNext }
       </div>
 
       {/* Images Section - always visible at bottom */}
-      <div className={`images-section ${phase === PHASES.TROLL ? 'decided' : ''}`}>
+      <div className={`images-section ${phase === PHASES.TROLL ? 'decided' : ''}`} ref={imagesRef}>
         <div className="images-row">
           {/* Success Image */}
           <div className={`image-box ${phase === PHASES.TROLL && !isCorrect ? 'hidden' : ''} ${phase === PHASES.TROLL && isCorrect ? 'winner' : ''}`}>
@@ -424,7 +435,7 @@ function Question({ question, questionNumber, totalQuestions, onAnswer, onNext }
                 alt="Falsch"
                 className="result-img"
                 onError={(e) => {
-                  e.target.src = '/images/bennet_fail.png';
+                  e.target.src = `${BASE_URL}images/bennet_fail.png`;
                 }}
               />
             )}
