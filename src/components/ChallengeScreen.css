@@ -1,0 +1,438 @@
+.challenge-screen {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: linear-gradient(135deg, #202020 0%, #052f54 100%);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.challenge-content {
+  text-align: center;
+  color: white;
+  width: 100%;
+  max-width: 400px;
+}
+
+.challenge-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.challenge-instruction {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin-bottom: 25px;
+}
+
+/* ==================== CAPTCHA ==================== */
+
+.captcha-container {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.captcha-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.captcha-cell {
+  aspect-ratio: 1;
+  background: rgba(255, 255, 255, 0.9);
+  border: 3px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.captcha-cell.selected {
+  border-color: #4ade80;
+  background: #d1fae5;
+}
+
+.captcha-emoji {
+  font-size: 2rem;
+}
+
+.captcha-message {
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+}
+
+.captcha-message.error {
+  color: #f87171;
+}
+
+.captcha-message.success {
+  color: #4ade80;
+}
+
+.verify-button {
+  width: 100%;
+  padding: 15px;
+  background: #4ade80;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.verify-button:active {
+  transform: scale(0.98);
+}
+
+.captcha-hint {
+  margin-top: 15px;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+/* ==================== CODING ==================== */
+
+.coding-container {
+  text-align: left;
+}
+
+.code-editor {
+  width: 100%;
+  height: 150px;
+  background: #1e1e1e;
+  color: #d4d4d4;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+  font-size: 0.9rem;
+  resize: none;
+  margin-bottom: 15px;
+}
+
+.code-editor:focus {
+  outline: 2px solid #667eea;
+}
+
+.code-result {
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+
+.code-result.success {
+  background: rgba(74, 222, 128, 0.2);
+  color: #4ade80;
+}
+
+.code-result.error {
+  background: rgba(248, 113, 113, 0.2);
+  color: #f87171;
+}
+
+.code-result.warning {
+  background: rgba(251, 191, 36, 0.2);
+  color: #fbbf24;
+}
+
+.challenge-description {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.challenge-description p {
+  margin: 5px 0;
+}
+
+.test-results {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.test-results-title {
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.test-list {
+  font-family: monospace;
+  font-size: 0.8rem;
+}
+
+.test-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 0;
+}
+
+.test-item.passed .test-icon {
+  color: #4ade80;
+}
+
+.test-item.failed .test-icon {
+  color: #f87171;
+}
+
+.test-detail {
+  opacity: 0.9;
+}
+
+.test-more {
+  font-size: 0.8rem;
+  opacity: 0.6;
+  margin-top: 8px;
+}
+
+.hint-section {
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  border-radius: 10px;
+  padding: 15px;
+  margin-top: 15px;
+}
+
+.hint-text {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.hint-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.hint-button {
+  padding: 8px 16px;
+  background: #fbbf24;
+  color: #1a1a1a;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.give-up-button {
+  padding: 8px 16px;
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.run-button {
+  width: 100%;
+  padding: 15px;
+  background: #22c55e;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.run-button:active {
+  transform: scale(0.98);
+}
+
+.code-hint {
+  margin-top: 15px;
+  font-size: 0.85rem;
+  opacity: 0.7;
+  text-align: center;
+}
+
+/* ==================== MATH ==================== */
+
+.math-container {
+  text-align: center;
+}
+
+.start-math-button {
+  padding: 20px 50px;
+  background: #f59e0b;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  cursor: pointer;
+  animation: pulse-math 1s ease-in-out infinite;
+}
+
+@keyframes pulse-math {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.math-timer {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.math-timer .urgent {
+  color: #ef4444;
+  animation: blink-urgent 0.3s ease-in-out infinite;
+}
+
+@keyframes blink-urgent {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.math-problem {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-family: monospace;
+}
+
+.math-input {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.2rem;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.math-input:focus {
+  outline: 2px solid #667eea;
+}
+
+.submit-math-button {
+  width: 100%;
+  padding: 15px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.math-hint {
+  margin-top: 15px;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+/* ==================== TERMS ==================== */
+
+.terms-container {
+  text-align: left;
+}
+
+.terms-scroll {
+  height: 200px;
+  background: white;
+  color: #333;
+  border-radius: 10px;
+  padding: 15px;
+  overflow-y: scroll;
+  margin-bottom: 20px;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.terms-scroll h3 {
+  margin-bottom: 15px;
+  color: #667eea;
+}
+
+.terms-scroll p {
+  margin-bottom: 10px;
+}
+
+.terms-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.terms-checkbox.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.terms-checkbox input {
+  margin-top: 3px;
+  width: 18px;
+  height: 18px;
+}
+
+.accept-button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.accept-button.enabled {
+  background: #4ade80;
+  color: white;
+}
+
+.accept-button.disabled {
+  background: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.5);
+  cursor: not-allowed;
+}
+
+/* ==================== RESPONSIVE ==================== */
+
+@media (min-width: 500px) {
+  .challenge-title {
+    font-size: 1.8rem;
+  }
+
+  .captcha-emoji {
+    font-size: 2.5rem;
+  }
+
+  .code-editor {
+    height: 180px;
+    font-size: 1rem;
+  }
+
+  .math-problem {
+    font-size: 1.8rem;
+  }
+
+  .terms-scroll {
+    height: 250px;
+  }
+}

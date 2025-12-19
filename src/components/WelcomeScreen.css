@@ -1,15 +1,18 @@
 .welcome-screen {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #202020 0%, #052f54 100%);
   padding: 20px;
 }
 
 .welcome-content {
   text-align: center;
   color: white;
+  max-width: 400px;
+  width: 100%;
 }
 
 .welcome-title {
@@ -47,6 +50,7 @@
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .start-button:hover {
@@ -56,4 +60,95 @@
 
 .start-button:active {
   transform: scale(0.98);
+}
+
+.captcha-section {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.captcha-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.captcha-instruction {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+.captcha-container {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.captcha-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.captcha-cell {
+  aspect-ratio: 1;
+  background: rgba(255, 255, 255, 0.9);
+  border: 3px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.captcha-cell.selected {
+  border-color: #4ade80;
+  background: #d1fae5;
+}
+
+.captcha-emoji {
+  font-size: 2rem;
+}
+
+.captcha-message {
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+}
+
+.captcha-message.error {
+  color: #f87171;
+}
+
+.captcha-message.success {
+  color: #4ade80;
+}
+
+.verify-button {
+  width: 100%;
+  padding: 15px;
+  background: #4ade80;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.verify-button:active {
+  transform: scale(0.98);
+}
+
+.captcha-hint {
+  margin-top: 15px;
+  font-size: 0.85rem;
+  opacity: 0.7;
 }

@@ -1,16 +1,18 @@
 import { useState } from 'react';
 import WelcomeScreen from './components/WelcomeScreen';
+import ChallengeScreen from './components/ChallengeScreen';
 import Question from './components/Question';
+import ResultScreen from './components/ResultScreen';
 import GiftReveal from './components/GiftReveal';
 import { friends, questions } from './data/quizData';
 import './App.css';
 
 function App() {
-  const [gameState, setGameState] = useState('welcome'); // 'welcome', 'quiz', 'result'
+  // States: 'welcome', 'quiz', 'result', 'end-challenge', 'gift'
+  const [gameState, setGameState] = useState('welcome');
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
-  const [showResult, setShowResult] = useState(false);
+  const [lastAnswer, setLastAnswer] = useState(null);
 
   const handleStart = () => {
     setGameState('quiz');
@@ -19,24 +21,38 @@ function App() {
   };
 
   const handleAnswer = (friendId) => {
-    setSelectedAnswer(friendId);
-    setShowResult(true);
-
     const isCorrect = friendId === questions[currentQuestion].correctAnswer;
     if (isCorrect) {
       setScore((prev) => prev + 1);
     }
 
-    // Move to next question after delay
-    setTimeout(() => {
-      if (currentQuestion < questions.length - 1) {
-        setCurrentQuestion((prev) => prev + 1);
-        setSelectedAnswer(null);
-        setShowResult(false);
-      } else {
-        setGameState('result');
-      }
-    }, 1500);
+    const correctFriend = friends.find(
+      (f) => f.id === questions[currentQuestion].correctAnswer
+    );
+
+    setLastAnswer({
+      isCorrect,
+      selectedId: friendId,
+      correctAnswer: correctFriend?.name || 'Unbekannt',
+      friend: correctFriend,
+    });
+
+    setGameState('result');
+  };
+
+  const handleNextQuestion = () => {
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion((prev) => prev + 1);
+      setLastAnswer(null);
+      setGameState('quiz');
+    } else {
+      // Go to end challenge (coding) before gift
+      setGameState('end-challenge');
+    }
+  };
+
+  const handleEndChallengeComplete = () => {
+    setGameState('gift');
   };
 
   return (
@@ -50,12 +66,28 @@ function App() {
           totalQuestions={questions.length}
           friends={friends}
           onAnswer={handleAnswer}
-          selectedAnswer={selectedAnswer}
-          showResult={showResult}
         />
       )}
 
-      {gameState === 'result' && (
+      {gameState === 'result' && lastAnswer && (
+        <ResultScreen
+          isCorrect={lastAnswer.isCorrect}
+          correctAnswer={lastAnswer.correctAnswer}
+          friend={lastAnswer.friend}
+          trollImage={lastAnswer.friend?.image}
+          onNext={handleNextQuestion}
+          questionNumber={currentQuestion}
+        />
+      )}
+
+      {gameState === 'end-challenge' && (
+        <ChallengeScreen
+          onComplete={handleEndChallengeComplete}
+          isEndChallenge={true}
+        />
+      )}
+
+      {gameState === 'gift' && (
         <GiftReveal score={score} totalQuestions={questions.length} />
       )}
     </div>
