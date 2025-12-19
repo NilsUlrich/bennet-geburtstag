@@ -71,8 +71,8 @@ function Question({ question, questionNumber, totalQuestions, onAnswer, onNext }
   const [isCorrect, setIsCorrect] = useState(false);
   const [highlightedAnswer, setHighlightedAnswer] = useState(null);
 
-  // Troll states - initialize with questionNumber
-  const [trollType, setTrollType] = useState(() => trollTypes[questionNumber % trollTypes.length]);
+  // Troll states - initialize with questionNumber (use questionNumber - 1 so question 1 gets 'runaway')
+  const [trollType, setTrollType] = useState(() => trollTypes[(questionNumber - 1) % trollTypes.length]);
   const [buttonPosition, setButtonPosition] = useState({ x: 50, y: 50 });
   const [runawayAttempts, setRunawayAttempts] = useState(0);
   const [isPausing, setIsPausing] = useState(false);
@@ -109,8 +109,8 @@ function Question({ question, questionNumber, totalQuestions, onAnswer, onNext }
     setIsCorrect(false);
     setHighlightedAnswer(null);
 
-    // Reset troll states
-    const troll = trollTypes[questionNumber % trollTypes.length];
+    // Reset troll states (use questionNumber - 1 so question 1 gets 'runaway')
+    const troll = trollTypes[(questionNumber - 1) % trollTypes.length];
     setTrollType(troll);
     setButtonPosition({ x: 50, y: 50 });
     setRunawayAttempts(0);
