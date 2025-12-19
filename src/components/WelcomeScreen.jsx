@@ -50,9 +50,9 @@ function WelcomeScreen({ onStart }) {
             <p className="welcome-text">
               Wir haben ein kleines Quiz für dich vorbereitet!
             </p>
-            <p className="welcome-subtext">
-              Wie gut kennst du deine Freunde?
-            </p>
+            <h3 className="welcome-subtext">
+              Löse die Aufgaben, um an dein Geschenk zu kommen!
+            </h3>
             <button className="start-button" onClick={handleStartClick}>
               Quiz starten
             </button>

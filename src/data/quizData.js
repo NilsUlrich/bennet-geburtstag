@@ -1,64 +1,65 @@
-// Quiz configuration - EDIT THESE!
-// Replace the placeholder names and image paths with your actual friends
-
-export const friends = [
-  {
-    id: 'friend1',
-    name: 'Freund 1', // Replace with actual name
-    image: '/images/friend1.jpg', // Add image to public/images/
-  },
-  {
-    id: 'friend2',
-    name: 'Freund 2',
-    image: '/images/friend2.jpg',
-  },
-  {
-    id: 'friend3',
-    name: 'Freund 3',
-    image: '/images/friend3.jpg',
-  },
-  {
-    id: 'friend4',
-    name: 'Freund 4',
-    image: '/images/friend4.jpg',
-  },
-  {
-    id: 'friend5',
-    name: 'Freund 5',
-    image: '/images/friend5.jpg',
-  },
-];
+// Quiz configuration
 
 export const questions = [
   {
     id: 1,
-    question: 'Wer würde am ehesten verschlafen und zu spät zur Party kommen?',
-    correctAnswer: 'friend1', // Change to the correct friend's id
+    image: '/images/dennis_success.png',
+    question: 'Was habe ich Findikci im externen Rechnungswesen auf seine Nachfrage, was ich gerade mache, aus Versehen gezeigt?',
+    answers: [
+      { id: 'A', text: 'Die richtige Antwort für eine Fuhrpark-Aufgabe' },
+      { id: 'B', text: 'Wie ich ein Fußball-WM-Spiel geschaut habe' },
+      { id: 'C', text: 'Ein KI-generiertes Bild von Findikci in Lederhose' },
+      { id: 'D', text: 'Wie wir Jungs eine Runde „Make-it-Meme" gespielt haben... und ein Meme über Findikci zu sehen war' },
+    ],
+    correctAnswer: 'B',
   },
   {
     id: 2,
-    question: 'Wer würde am ehesten das Geburtstagsgeschenk vergessen?',
-    correctAnswer: 'friend2',
+    image: '/images/louis_success.png',
+    question: 'Wodurch hatten wir beim Mathetutor Hr. R. mal den krassesten Lachflash?',
+    answers: [
+      { id: 'A', text: 'Wir haben Minecraft-Sounds nachgemacht' },
+      { id: 'B', text: 'Wir haben die erste Reihe mit Papier beworfen' },
+      { id: 'C', text: 'Der Glühwein ist von der Heizung gefallen' },
+      { id: 'D', text: 'Er hatte einen Porno-Browsertab offen' },
+    ],
+    correctAnswer: 'A',
   },
   {
     id: 3,
-    question: 'Wer würde am ehesten die ganze Torte alleine essen?',
-    correctAnswer: 'friend3',
+    image: '/images/nils_success.png',
+    contentImage: '/images/pitch.png',
+    question: 'Welches Zitat hat hier die Jury die Fassung verlieren lassen?',
+    answers: [
+      { id: 'A', text: 'Wir konnten bereits drei Unternehmen von unserem Produkt überzeugen' },
+      { id: 'B', text: 'Einige Professoren haben ihr gesamtes Erspartes in unser Vorhaben investiert' },
+      { id: 'C', text: 'In dieser Woche hatten wir Marketing Kosten im sechstelligen Bereich und haben keinen Kunden akquiriert' },
+      { id: 'D', text: 'Ach digga, die Powerpoint' },
+    ],
+    correctAnswer: 'D',
   },
   {
     id: 4,
-    question: 'Wer würde am ehesten auf der Party einschlafen?',
-    correctAnswer: 'friend4',
+    image: '/images/konsti.png',
+    question: 'Wo haben wir uns wahrscheinlich alle ne Lebensmittelvergiftung geholt?',
+    answers: [
+      { id: 'A', text: 'Yogi (Asiate beim Rewe)' },
+      { id: 'B', text: 'Bamboo Bistro' },
+      { id: 'C', text: 'Happy Döner' },
+    ],
+    correctAnswer: 'A',
   },
   {
     id: 5,
-    question: 'Wer würde am ehesten einen peinlichen Toast halten?',
-    correctAnswer: 'friend5',
-  },
-  {
-    id: 6,
-    question: 'Wer würde am ehesten den ganzen Abend nur tanzen?',
-    correctAnswer: 'friend1',
+    image: '/images/philip_success.png',
+    question: 'Mit wem haben wir nen paar entspannte Runden Tischtennis gezockt, während die anderen weiter gearbeitet haben?',
+    answers: [
+      { id: 'A', text: 'Koschnick' },
+      { id: 'B', text: 'Schlesinger' },
+      { id: 'C', text: 'Wogt' },
+      { id: 'D', text: 'Rochow' },
+    ],
+    correctAnswer: 'A',
   },
 ];
 
@@ -66,6 +67,6 @@ export const questions = [
 export const gift = {
   title: 'Dein Geschenk!',
   subtitle: 'Alles Gute zum Geburtstag, Bennet!',
-  description: 'Ein Wellness-Gutschein für dich!',
-  details: 'Genieße einen entspannten Tag im Spa - von uns allen für dich!',
+  description: 'Ein Vabali Wellness-Gutschein für dich!',
+  details: 'Genieße einen entspannten Tag - von uns allen für dich!',
 };

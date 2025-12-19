@@ -20,9 +20,9 @@ function GiftReveal({ score, totalQuestions }) {
           </div>
           <p className="score-text">
             {score === totalQuestions
-              ? 'Perfekt! Du kennst deine Freunde wirklich gut!'
+              ? 'Perfekt!'
               : score >= totalQuestions / 2
-              ? 'Nicht schlecht! Du kennst uns ganz gut!'
+              ? 'Nicht schlecht!'
               : 'Naja, da geht noch was... Aber das ist okay!'}
           </p>
         </div>
@@ -55,7 +55,7 @@ function GiftReveal({ score, totalQuestions }) {
           </div>
         </div>
 
-        <p className="signature">Mit Liebe von deinen Freunden ❤️</p>
+        <p className="signature">Mit Liebe von Deinen Anonymen Exmatrikulanten ❤️</p>
       </div>
     </div>
   );
