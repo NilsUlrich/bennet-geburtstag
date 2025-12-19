@@ -166,16 +166,21 @@ function Question({ question, questionNumber, totalQuestions, onAnswer, onNext }
   useEffect(() => {
     if (phase !== PHASES.REVEAL) return;
 
-    // Auto scroll to images section
-    if (imagesRef.current) {
-      imagesRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
+    // Auto scroll to images section (with delay for mobile)
+    const scrollTimer = setTimeout(() => {
+      if (imagesRef.current) {
+        imagesRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      }
+    }, 100);
 
     const timer = setTimeout(() => {
       setPhase(PHASES.TROLL);
     }, 1500);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(scrollTimer);
+      clearTimeout(timer);
+    };
   }, [phase]);
 
   // Loading animation
@@ -372,18 +377,19 @@ function Question({ question, questionNumber, totalQuestions, onAnswer, onNext }
         Frage {questionNumber} von {totalQuestions}
       </div>
 
-      <div className="question-image-container">
-        <img
-          src={`${BASE_URL}${question.image.replace(/^\//, '')}`}
-          alt="Frage"
-          className="question-image"
-          onError={(e) => {
-            e.target.src = 'https://ui-avatars.com/api/?name=?&background=667eea&color=fff&size=150';
-          }}
-        />
+      <div className="question-header">
+        <div className="question-image-container">
+          <img
+            src={`${BASE_URL}${question.image.replace(/^\//, '')}`}
+            alt="Frage"
+            className="question-image"
+            onError={(e) => {
+              e.target.src = 'https://ui-avatars.com/api/?name=?&background=667eea&color=fff&size=150';
+            }}
+          />
+        </div>
+        <h2 className="question-text">{question.question}</h2>
       </div>
-
-      <h2 className="question-text">{question.question}</h2>
 
       {question.contentImage && (
         <div className="content-image-container">

@@ -10,21 +10,18 @@ function GiftReveal({ score, totalQuestions }) {
     return () => clearTimeout(timer);
   }, []);
 
+  const getScoreEmoji = () => {
+    if (score === totalQuestions) return '🏆';
+    if (score >= totalQuestions / 2) return '👍';
+    return '😅';
+  };
+
   return (
     <div className="gift-screen">
       <div className={`gift-content ${revealed ? 'revealed' : ''}`}>
         <div className="score-section">
-          <h3 className="score-label">Dein Ergebnis</h3>
-          <div className="score-display">
-            {score} / {totalQuestions}
-          </div>
-          <p className="score-text">
-            {score === totalQuestions
-              ? 'Perfekt!'
-              : score >= totalQuestions / 2
-              ? 'Nicht schlecht!'
-              : 'Naja, da geht noch was... Aber das ist okay!'}
-          </p>
+          <span className="score-label">Ergebnis:</span>
+          <span className="score-display">{score}/{totalQuestions} {getScoreEmoji()}</span>
         </div>
 
         <div className="gift-box">
@@ -39,7 +36,7 @@ function GiftReveal({ score, totalQuestions }) {
           </div>
 
           <div className="confetti">
-            {[...Array(20)].map((_, i) => (
+            {[...Array(15)].map((_, i) => (
               <div
                 key={i}
                 className="confetti-piece"

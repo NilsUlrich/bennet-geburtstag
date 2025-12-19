@@ -25,14 +25,17 @@
   overflow: hidden;
   margin-bottom: 10px;
   flex-shrink: 0;
+  position: relative;
 }
 
 .progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100%;
   background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
   border-radius: 4px;
   transition: width 0.3s ease;
-  min-width: 8px;
 }
 
 .question-counter {
@@ -43,12 +46,24 @@
   flex-shrink: 0;
 }
 
+/* Question header: image left, text right */
+.question-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  flex-shrink: 0;
+}
+
 .question-image-container {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
   border-radius: 50%;
   overflow: hidden;
-  margin: 0 auto 10px;
   border: 3px solid white;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   flex-shrink: 0;
@@ -62,15 +77,11 @@
 
 .question-text {
   color: white;
-  text-align: center;
-  font-size: 1rem;
-  margin-bottom: 12px;
+  text-align: left;
+  font-size: 0.95rem;
+  margin: 0;
   line-height: 1.4;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  flex-shrink: 0;
 }
 
 .content-image-container {
@@ -656,12 +667,13 @@
 
 @media (min-width: 400px) {
   .question-image-container {
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
+    min-width: 70px;
   }
 
   .question-text {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .answer-button {
@@ -688,13 +700,18 @@
     padding: 20px;
   }
 
+  .question-header {
+    gap: 16px;
+  }
+
   .question-image-container {
-    width: 120px;
-    height: 120px;
+    width: 80px;
+    height: 80px;
+    min-width: 80px;
   }
 
   .question-text {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
   }
 
   .answer-button {
