@@ -4,9 +4,9 @@
 
 export const memoryImages = [
   '/images/memory/troll_familienfoto.png',
-  '/images/pitch.png',
-  '/images/louis_success.png',
-  '/images/konsti_fail.png',
+  '/images/memory/bennet_bachelor.png',
+  '/images/memory/bennet_hund.png',
+  '/images/memory/bennet_matcha.png',
   '/images/caveng.png',
   '/images/bennet_fail.png',
 ];
