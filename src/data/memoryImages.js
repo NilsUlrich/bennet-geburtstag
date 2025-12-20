@@ -3,10 +3,10 @@
 // Du kannst auch externe URLs verwenden (https://...). Beispiele unten.
 
 export const memoryImages = [
-  '/images/memory/troll_familienfoto.png',
-  '/images/memory/bennet_bachelor.png',
-  '/images/memory/bennet_hund.png',
-  '/images/memory/bennet_matcha.png',
-  '/images/caveng.png',
-  '/images/bennet_fail.png',
+  'images/memory/troll_familienfoto.png',
+  'images/memory/bennet_bachelor.png',
+  'images/memory/bennet_hund.png',
+  'images/memory/bennet_matcha.png',
+  'images/caveng.png',
+  'images/bennet_fail.png',
 ];
