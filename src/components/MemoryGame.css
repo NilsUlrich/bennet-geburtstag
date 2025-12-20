@@ -51,6 +51,7 @@
 .memory-grid {
   display: grid;
   gap: 12px;
+  justify-items: center;
 }
 
 /* Responsive columns based on pair count */
@@ -59,12 +60,18 @@
 .memory-grid.pairs-3 { grid-template-columns: repeat(3, 1fr); }
 .memory-grid.pairs-4 { grid-template-columns: repeat(4, 1fr); }
 .memory-grid.pairs-5 { grid-template-columns: repeat(5, 1fr); }
-.memory-grid.pairs-6 { grid-template-columns: repeat(4, 1fr); }
+.memory-grid.pairs-6 { grid-template-columns: repeat(3, 1fr); }
 .memory-grid.pairs-7 { grid-template-columns: repeat(4, 1fr); }
 .memory-grid.pairs-8 { grid-template-columns: repeat(4, 1fr); }
 
+@media (max-width: 640px) {
+  /* Auf Phones (z.B. iPhone 16) weniger Spalten = größere Karten */
+  .memory-grid.pairs-6 { grid-template-columns: repeat(2, 1fr); }
+  .memory-card { max-width: 260px; }
+}
+
 @media (min-width: 800px) {
-  .memory-grid.pairs-6 { grid-template-columns: repeat(6, 1fr); }
+  .memory-grid.pairs-6 { grid-template-columns: repeat(4, 1fr); }
   .memory-grid.pairs-7 { grid-template-columns: repeat(7, 1fr); }
   .memory-grid.pairs-8 { grid-template-columns: repeat(4, 1fr); }
 }
